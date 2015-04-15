@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
+#include <map>
 #include <unordered_map>
 #include "Pharmacie.hpp"
 
@@ -125,7 +126,8 @@ void Pharmacie::listeMedicament()
 void Pharmacie::buildReverseMeds()
 {
   cout << "CREATION REVERSE MAP POUR HISTO : \n";
-  for (unordered_map< string,vector<string> >::iterator it1 =meds.begin();it !=meds.end(); ++it)
+  map<string, vector<string*> >::iterator finded; 
+  for (unordered_map< string,vector<string> >::iterator it1 =meds.begin();it1 !=meds.end(); ++it1)
   {
     for(vector<string>::iterator it2 = it1->second.begin();it2!=it1->second.end();++it2)
     {
@@ -135,7 +137,7 @@ void Pharmacie::buildReverseMeds()
 	addReverseMap((*it2),it1->first);
       /* Sinon il suffit d'add un pointeur sur le médicament au bon vecteur */
       else
-	it2->pushback(it1->(&first));
+	it1->second.pushback(it1->(&first));
     }
   }
 }

@@ -19,6 +19,7 @@ private:
   unsigned int nEffetSecondaire;
 public:
   Pharmacie(string);
+  void addReverseMap(string effetSec,string medoc);
   void buildReverseMeds();
   void parsePharma(ifstream&); // parse le fichier d'entrée
   void parseMed(string); // parse un médicament
